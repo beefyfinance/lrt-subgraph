@@ -24,6 +24,7 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
     vaults.push(new VaultConfig("curve-arb-dlcbtc", PLATFORM_CURVE, "0x7eD37e03D64e6d1c7e315F1faf295f1E3A4B29dF"))
     vaults.push(new VaultConfig("equilibria-arb-ezeth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x218337d7DAe070e219c44783A64cA107dffc533e"))
     vaults.push(new VaultConfig("equilibria-arb-ezeth-27jun24", PLATFORM_PENDLE_EQUILIBRIA, "0xdccb85017a996faF5242648B46940E80DE0A36a5"))
+    vaults.push(new VaultConfig("equilibria-arb-rseth-26dec24", PLATFORM_PENDLE_EQUILIBRIA, "0x0da91e452BdbE890B3eba9Eb5C0778DA9AB28E51"))
     vaults.push(new VaultConfig("equilibria-arb-rseth-26sep24-new", PLATFORM_PENDLE_EQUILIBRIA, "0x4897679a3E506F0bedC118250369D782F6CCA03e"))
     vaults.push(new VaultConfig("equilibria-arb-rseth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x66d89d65046D8BC75E0fb14E704e50E8C7a07219"))
     vaults.push(new VaultConfig("equilibria-arb-rseth-27jun24", PLATFORM_PENDLE_EQUILIBRIA, "0x59D0C3f25cB3bD86E03D827C773892d247452227"))
@@ -54,7 +55,7 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
   if (network === "base") {
     vaults.push(new VaultConfig("aerodrome-ezeth-weth-s", PLATFORM_SOLIDLY, "0x90A7de0E16CA4521B1E4C3dBBA4edAA2354aB81B"))
     vaults.push(new VaultConfig("aerodrome-ezeth-weth", PLATFORM_SOLIDLY, "0xAB7EeE0a368079D2fBfc83599eD0148a16d0Ea09"))
-    vaults.push(new VaultConfig("aerodrome-usdz-susdz", PLATFORM_SOLIDLY, "0xd4F3e6FaD95Af2512462FeCe507be3C29FE7960C"))
+    vaults.push(new VaultConfig("aerodrome-usdz-susdz", PLATFORM_SOLIDLY, "0xd4F3e6FaD95Af2512462FeCe507be3C29FE7960C", ["0x1442bCfa9aB4EB8dBfE1947d18Fbd59fbbC20306"]))
     vaults.push(new VaultConfig("aerodrome-usdz-usdc", PLATFORM_SOLIDLY, "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1"))
     vaults.push(new VaultConfig("aerodrome-usdz-weth", PLATFORM_SOLIDLY, "0x04B3E65D4f8f722d7B0D2BA76075B1eAC33CE2AF"))
     vaults.push(new VaultConfig("aerodrome-weth-wrseth", PLATFORM_SOLIDLY, "0xC5cD1A6d4918820201B8E4eeB6d2AdFD1CDF783d"))
@@ -109,7 +110,7 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
   }
 
   if (network === "optimism") {
-    vaults.push(new VaultConfig("aura-op-weth-wrseth", PLATFORM_BALANCER_AURA, "0x2160BEDE9d5559bA559Eaf88052b46b8364eE245"))
+    vaults.push(new VaultConfig("aura-op-weth-wrseth", PLATFORM_BALANCER_AURA, "0x2160BEDE9d5559bA559Eaf88052b46b8364eE245", ["0x154A3e33014224EC72a2F241eb8c328Bc69D3db7"]))
     vaults.push(new VaultConfig("uniswap-cow-op-rseth-wsteth", PLATFORM_BEEFY_CLM, "0x0f46a74b01708e78c27def7160a5c5222f9dd157", ["0xF1748128a1b5c0c45728D09F6f1f60748bC03FE1"]))
     vaults.push(new VaultConfig("uniswap-cow-op-wsteth-ezeth-vault", PLATFORM_BEEFY_CLM_VAULT, "0xfCb36EC9cA09522d584263A5Bee4e793146ee74f"))
     vaults.push(new VaultConfig("uniswap-cow-op-wsteth-ezeth", PLATFORM_BEEFY_CLM, "0x87F91963005c57596dA3576B469617FDC6DEC5a8", ["0x1DD7A8C8eE981970CF4e91800c83087F69d6DdeC"]))
