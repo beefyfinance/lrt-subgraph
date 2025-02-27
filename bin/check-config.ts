@@ -57,7 +57,7 @@ const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: strin
     await fetch(`https://api.beefy.finance/points-structures`).then((res): Promise<ApiPointsStructure[]> => res.json()),
   ])
 
-  const pointsStructuresSupportedByThisSubgraph = pointsStructures.filter((p) => p.accounting.some((e) => e.id === "beefy-lrt-subgraph"))
+  const pointsStructuresSupportedByThisSubgraph = pointsStructures.filter((p) => (p.accounting || []).some((e) => e.id === "beefy-lrt-subgraph"))
   const supportedPointsStructuresById = pointsStructuresSupportedByThisSubgraph.reduce(
     (acc, p) => {
       acc[p.id] = p

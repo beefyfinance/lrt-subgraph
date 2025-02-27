@@ -17,7 +17,12 @@ export const TRACK_ONLY_SHARE_AND_UNDERLYING_TOKEN_BALANCE = "TRACK_ONLY_SHARE_A
 export function _getChainVaults(network: string): Array<VaultConfig> {
   const vaults = new Array<VaultConfig>()
   if (network === "arbitrum-one") {
-    vaults.push(new VaultConfig("aura-arb-ezeth-wsteth", PLATFORM_BALANCER_AURA, "0xEFAd727469e7e4e410376986AB0af8B6F9559fDc", ["0xfcF293AFa58fa277935eddAa44E0f782EC41B09B"]))
+    vaults.push(
+      new VaultConfig("aura-arb-ezeth-wsteth", PLATFORM_BALANCER_AURA, "0xEFAd727469e7e4e410376986AB0af8B6F9559fDc", [
+        "0xfcF293AFa58fa277935eddAa44E0f782EC41B09B",
+        "0x8d4faAa513943Cee209f819779075e5cD80FbF8D",
+      ]),
+    )
     vaults.push(new VaultConfig("aura-arb-rseth-weth", PLATFORM_BALANCER_AURA, "0x764e4e75e3738615CDBFAeaE0C8527b1616e1123"))
     vaults.push(new VaultConfig("camelot-ezeth-weth", PLATFORM_BEEFY_CLM, "0x663B0d9ddB6e86cB5E1F87ebCbDafb5A53a45798", ["0xf1ff0F8793DbA18dF40E8b8aff66CE6f7a9DF945"]))
     vaults.push(new VaultConfig("camelot-rseth-weth", PLATFORM_BEEFY_CLM, "0xac8246F01197fB783Bf1A80960821835045Ec680", ["0xD9001574E23fb909657A25494f540A9B3804b16e"]))
@@ -30,17 +35,22 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
     vaults.push(new VaultConfig("equilibria-arb-rseth-27jun24", PLATFORM_PENDLE_EQUILIBRIA, "0x59D0C3f25cB3bD86E03D827C773892d247452227"))
     vaults.push(new VaultConfig("equilibria-arb-rseth", PLATFORM_PENDLE_EQUILIBRIA, "0x7975d9EcCe584aDcE00efd16520853Dad66a7775"))
     vaults.push(new VaultConfig("equilibria-arb-seth-ezeth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x6523aFd4658238aa9C8ABA642565b84e2C9E9012"))
-    vaults.push(new VaultConfig("equilibria-arb-seth-ezeth-27jun24", PLATFORM_PENDLE_EQUILIBRIA, "0xE2F1DdD8A02774827764bdeC8F84B29B50195969"))
     vaults.push(new VaultConfig("equilibria-arb-seth-rseth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x9487044D3208Ff03343429F10307f0a23A27dfeC"))
     vaults.push(new VaultConfig("equilibria-arb-unieth-26dec24", PLATFORM_PENDLE_EQUILIBRIA, "0x48a0693241A7556216F9106EB2AA78251388DE69"))
     vaults.push(new VaultConfig("pancake-cow-arb-rseth-weth-vault", PLATFORM_BEEFY_CLM_VAULT, "0x70a9DC4c4c4ea1A621c174e3F438582fA7C99BFA"))
     vaults.push(new VaultConfig("pancake-cow-arb-rseth-weth", PLATFORM_BEEFY_CLM, "0x5c1f30297b7997601a2ae2957cdc95cd4783e544", ["0x3ec0e7Bf0DCDA562d67d8d7F27569AA0be080DAb"]))
+    vaults.push(new VaultConfig("pendle-arb-dusdc-26jun25", PLATFORM_PENDLE_EQUILIBRIA, "0x4542588C4adfA20ff3F01180fcEde79fE306cB81"))
     vaults.push(new VaultConfig("pendle-arb-dusdc-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0xf8934BDFe5424D3e8101A73dBAb30f73335106Ea"))
+    vaults.push(new VaultConfig("pendle-arb-dwbtc-26jun25", PLATFORM_PENDLE_EQUILIBRIA, "0x7cC384D2f228eB17f5D5ECD4C9DF5bC2c3A8Ed68"))
     vaults.push(new VaultConfig("pendle-arb-ezeth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0xeA4317300Cd4F856B63d8Fc964B3a3Aa64ce712F"))
+    vaults.push(new VaultConfig("pendle-arb-rseth-26jun25", PLATFORM_PENDLE_EQUILIBRIA, "0xCF8239be4AB29217598047210ab2Dd2684DabE2A"))
     vaults.push(new VaultConfig("pendle-arb-rseth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0xcf4D88E8d3496aaEC03A53A05a5cf3da93c2394D"))
     vaults.push(new VaultConfig("pendle-arb-seth-ezeth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0xaD2cd300E6fFd20f620255C2C13251FB1D76F660"))
     vaults.push(new VaultConfig("pendle-arb-seth-rseth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0xa47D338061c499DBF8dd93a857828762b594d543"))
     vaults.push(new VaultConfig("pendle-arb-unieth-26dec24", PLATFORM_PENDLE_EQUILIBRIA, "0xabe6199ad847F05f1E93B005f3850793b8DF7c9c"))
+    vaults.push(new VaultConfig("pendle-eqb-arb-dusdc-26jun25", PLATFORM_PENDLE_EQUILIBRIA, "0x727EE5b220f871114605cdFF805d559BAabBe7E2"))
+    vaults.push(new VaultConfig("pendle-eqb-arb-dwbtc-26jun25", PLATFORM_PENDLE_EQUILIBRIA, "0xac155D963D6879d62ACbEc8DA412fCa8b46FB8C2"))
+    vaults.push(new VaultConfig("pendle-eqb-arb-rseth-26jun25", PLATFORM_PENDLE_EQUILIBRIA, "0x792C24717700Eb3824CCb58FCB4E6Da4B17dd178"))
     vaults.push(new VaultConfig("ramses-cl-rseth-ethx-vault", PLATFORM_BEEFY_CLM_VAULT, "0x4fCf6A05a7F1A5BA2781d7De4DB78Bd16F84F540", ["0x1f84DaF589C0b9Dea8c9a1B7463099e2DB2F589a"]))
     vaults.push(new VaultConfig("ramses-cl-rseth-ethx", PLATFORM_BEEFY_CLM, "0xBB18cb9D1F3f20dd1c3Af946b46Dd19872206DDa", ["0xf2bf40360aa066353f3b42576799141fe80e0285"]))
     vaults.push(new VaultConfig("ramses-cl-rseth-weth-vault", PLATFORM_BEEFY_CLM_VAULT, "0x45eAc6f86b974b0536Aa488eD8DDF3022F4C768E", ["0x338Fb7e54f4875c76cA77AA9653eB08e856e1FcD"]))
@@ -53,6 +63,8 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
   }
 
   if (network === "base") {
+    vaults.push(new VaultConfig("aerodrome-cow-wsteth-wrseth-vault", PLATFORM_SOLIDLY, "0xa3F936C5C59683b2998062DA793C0023184F5073"))
+    vaults.push(new VaultConfig("aerodrome-cow-wsteth-wrseth", PLATFORM_SOLIDLY, "0xa6601388db296dDf20D9DF72211f26Ff78Ac79f9", ["0x84316c44274d3d416cD1F066a992f12d45933D68"]))
     vaults.push(new VaultConfig("aerodrome-ezeth-weth-s", PLATFORM_SOLIDLY, "0x90A7de0E16CA4521B1E4C3dBBA4edAA2354aB81B"))
     vaults.push(new VaultConfig("aerodrome-ezeth-weth", PLATFORM_SOLIDLY, "0xAB7EeE0a368079D2fBfc83599eD0148a16d0Ea09"))
     vaults.push(new VaultConfig("aerodrome-usdz-susdz", PLATFORM_SOLIDLY, "0xd4F3e6FaD95Af2512462FeCe507be3C29FE7960C", ["0x1442bCfa9aB4EB8dBfE1947d18Fbd59fbbC20306"]))
@@ -72,9 +84,9 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
     vaults.push(new VaultConfig("aura-weeth-ezeth-rseth", PLATFORM_BALANCER_AURA, "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776"))
     vaults.push(new VaultConfig("curve-veth", PLATFORM_CURVE, "0xAE0bFfc3110e69DA8993F11C1CBd9a6eA3d16daF", ["0x9Db900bFD1D13112dE2239418eb3D8673B6F1878"]))
     vaults.push(new VaultConfig("pendle-ageth-26dec24", PLATFORM_PENDLE_EQUILIBRIA, "0xc651F2e75101b247bdA18414Fcc23d00cd2c31e2"))
-    vaults.push(new VaultConfig("pendle-rseth-26dec24", PLATFORM_PENDLE_EQUILIBRIA, "0x178799CF80C4E16D195f75ff82a9C53b216b08D6"))
-    vaults.push(new VaultConfig("pendle-rsweth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x22b5f6692bAdaB196b4eEBfc1f9DA72D5Cc2af15"))
-    vaults.push(new VaultConfig("pendle-unieth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x9A43381249a6417f8ce03CCF26139b5f05527e4F"))
+    // vaults.push(new VaultConfig("pendle-rseth-26dec24", PLATFORM_PENDLE_EQUILIBRIA, "0x178799CF80C4E16D195f75ff82a9C53b216b08D6"))
+    // vaults.push(new VaultConfig("pendle-rsweth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x22b5f6692bAdaB196b4eEBfc1f9DA72D5Cc2af15"))
+    // vaults.push(new VaultConfig("pendle-unieth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x9A43381249a6417f8ce03CCF26139b5f05527e4F"))
   }
 
   if (network === "linea") {
@@ -99,6 +111,23 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
 
   if (network === "kava") {
     vaults.push(new VaultConfig("kinetix-klp", TRACK_ONLY_SHARE_AND_UNDERLYING_TOKEN_BALANCE, "0x9a207D4D2ee8175995C69c0Fb1F117Bf7CcC93cd", ["0x7E4bEdE523726283BdF309d49087C3305e681cE0"]))
+  }
+
+  if (network === "lisk") {
+    vaults.push(new VaultConfig("uniswap-cow-lisk-usdt-weth", PLATFORM_BEEFY_CLM, "0xdC76e4fcE40C8224D6Bbc7Dd733165A8A07DCe0D", ["0x7BF7E5105b7AC0C8AAa37bCC632F5B9720A71F2a"]))
+    vaults.push(new VaultConfig("uniswap-cow-lisk-weth-lsk", PLATFORM_BEEFY_CLM, "0x52115E698dC76Fc0ac75145c4f3F5d986E4CE162", ["0xb321E8698E6587275Ca11AD63c40e912C8659cf6"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-usdt-usdc.e-vault", PLATFORM_BEEFY_CLM_VAULT, "0x19D1F0A1a2FE5807958b34ADBc0d0569A93727C7", ["0x69e8612c2364e0e743731c4BE16813BfD18e2E32"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-usdt-usdc.e", PLATFORM_BEEFY_CLM, "0xB3AAc1293632706E134E4cC41976B49EC89fAb1b", ["0x6b18251437f88b8f169ecC5d950Cc7c4b885614E"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-usdt-weth-vault", PLATFORM_BEEFY_CLM_VAULT, "0x54d91365cB1eA8F454DaA43af91f9198d32b62FD", ["0x57bC7064B165fBCB1B0df55aF76e3b2aAEB0aA95"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-usdt-weth", PLATFORM_BEEFY_CLM, "0x270c72285aa76233AdAd07b6C20ac81d4fE68F8e", ["0x7C491106dc9583f4cAC26e226E0f44E8884F0C93"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-wbtc-weth-vault", PLATFORM_BEEFY_CLM_VAULT, "0xAc0E6ba47A20EE95E3149910dA3844b851537f25"))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-wbtc-weth", PLATFORM_BEEFY_CLM, "0x129E66F12e46D0B529786BA517dd00CECA343a73", ["0xb1A1A9486d6FC5146525C010Df70e1E095ADD9a3"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-weth-lsk-vault", PLATFORM_BEEFY_CLM_VAULT, "0xA2A2Eff23093461098F51f58d9Bb0A1A4d46B304"))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-weth-lsk", PLATFORM_BEEFY_CLM, "0xac763E75B02164b39A240DA60b060281BAd66a55", ["0x74BE1F8930e7547dA19eE9D9035F7A185FC4C251"]))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-weth-xvelo-vault", PLATFORM_BEEFY_CLM_VAULT, "0x8F4488c0423d418c4e4796A912Dd3E8c23624969"))
+    vaults.push(new VaultConfig("velodrome-cow-lisk-weth-xvelo", PLATFORM_BEEFY_CLM, "0x38Dfe64d47E54feD51eAc11813a2a648e0024BFe", ["0x23C9159A4429c90dD250a900ea9F11222e6E88bd"]))
+    vaults.push(new VaultConfig("velodrome-lisk-lsk-weth", PLATFORM_SOLIDLY, "0x573F85C231a382Fa749E5Dae729dC09C36f71bA4"))
+    vaults.push(new VaultConfig("velodrome-lisk-weth-usdc.e", PLATFORM_SOLIDLY, "0xFF37EBCA7B998fd39b2C7867e06e1D283bAB69b8"))
   }
 
   if (network === "manta-pacific-mainnet") {
