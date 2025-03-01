@@ -63,8 +63,8 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
   }
 
   if (network === "base") {
-    vaults.push(new VaultConfig("aerodrome-cow-wsteth-wrseth-vault", PLATFORM_SOLIDLY, "0xa3F936C5C59683b2998062DA793C0023184F5073"))
-    vaults.push(new VaultConfig("aerodrome-cow-wsteth-wrseth", PLATFORM_SOLIDLY, "0xa6601388db296dDf20D9DF72211f26Ff78Ac79f9", ["0x84316c44274d3d416cD1F066a992f12d45933D68"]))
+    vaults.push(new VaultConfig("aerodrome-cow-wsteth-wrseth-vault", PLATFORM_BEEFY_CLM_VAULT, "0xa3F936C5C59683b2998062DA793C0023184F5073"))
+    vaults.push(new VaultConfig("aerodrome-cow-wsteth-wrseth", PLATFORM_BEEFY_CLM, "0xa6601388db296dDf20D9DF72211f26Ff78Ac79f9", ["0x84316c44274d3d416cD1F066a992f12d45933D68"]))
     vaults.push(new VaultConfig("aerodrome-ezeth-weth-s", PLATFORM_SOLIDLY, "0x90A7de0E16CA4521B1E4C3dBBA4edAA2354aB81B"))
     vaults.push(new VaultConfig("aerodrome-ezeth-weth", PLATFORM_SOLIDLY, "0xAB7EeE0a368079D2fBfc83599eD0148a16d0Ea09"))
     vaults.push(new VaultConfig("aerodrome-usdz-susdz", PLATFORM_SOLIDLY, "0xd4F3e6FaD95Af2512462FeCe507be3C29FE7960C", ["0x1442bCfa9aB4EB8dBfE1947d18Fbd59fbbC20306"]))
