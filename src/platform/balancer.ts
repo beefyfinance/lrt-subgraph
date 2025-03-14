@@ -5,6 +5,7 @@ import { BalancerPool as BalancerPoolContract } from "../../generated/templates/
 import { IERC20 as ERC20Contract } from "../../generated/templates/BeefyVaultV7/IERC20"
 import { BalancerVault as BalancerVaultContract } from "../../generated/templates/BeefyVaultV7/BalancerVault"
 import { Address } from "@graphprotocol/graph-ts"
+import { BeefyIStrategyV7 as IStrategyV7Contract } from "../../generated/templates/BeefyVaultV7/BeefyIStrategyV7"
 
 export function getVaultTokenBreakdownBalancerAura(vault: BeefyVault): Array<TokenBalance> {
   let balances = new Array<TokenBalance>()
@@ -40,7 +41,9 @@ export function getVaultTokenBreakdownBalancer(vault: BeefyVault): Array<TokenBa
 
   const poolAddress = Address.fromBytes(vault.underlyingToken)
   const poolTotalSupply = ERC20Contract.bind(poolAddress).totalSupply()
-  const balancerVaultContract = BalancerVaultContract.bind(poolAddress)
+
+  const balancerVaultAddress = IStrategyV7Contract.bind(vault.strategy).balancerVault()
+  const balancerVaultContract = BalancerVaultContract.bind(balancerVaultAddress)
   const poolInfos = balancerVaultContract.getPoolTokenInfo(poolAddress)
   const poolTokens = poolInfos.getTokens()
   const poolBalances = poolInfos.getBalancesRaw()
