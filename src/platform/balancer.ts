@@ -42,7 +42,7 @@ export function getVaultTokenBreakdownBalancer(vault: BeefyVault): Array<TokenBa
   const poolAddress = Address.fromBytes(vault.underlyingToken)
   const poolTotalSupply = ERC20Contract.bind(poolAddress).totalSupply()
 
-  const balancerVaultAddress = IStrategyV7Contract.bind(vault.strategy).balancerVault()
+  const balancerVaultAddress = IStrategyV7Contract.bind(Address.fromBytes(vault.strategy)).balancerVault()
   const balancerVaultContract = BalancerVaultContract.bind(balancerVaultAddress)
   const poolInfos = balancerVaultContract.getPoolTokenInfo(poolAddress)
   const poolTokens = poolInfos.getTokens()
