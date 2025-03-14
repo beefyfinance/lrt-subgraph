@@ -48,6 +48,7 @@ interface ApiGovVault {
 const pointStructureOverrides: Record<string, string[]> = {
   "silo-arb-silo": ["silo-points"],
   "silov2-sonic-usdce-ws": ["silo-points"],
+  "beetsv3-sonic-beefyusdce-scusd": ["silo-points"],
 }
 
 const additionalPointStructureConfig: ApiPointsStructure[] = [

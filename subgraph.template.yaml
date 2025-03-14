@@ -52,6 +52,8 @@ dataSources:
           file: ./abis/platform/BalancerPool.json
         - name: BalancerVault
           file: ./abis/platform/BalancerVault.json
+        - name: BalancerStablePool
+          file: ./abis/platform/BalancerStablePool.json
         - name: CurveToken
           file: ./abis/platform/CurveToken.json
         - name: CurvePool

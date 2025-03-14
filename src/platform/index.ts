@@ -2,6 +2,7 @@ import { log } from "@graphprotocol/graph-ts"
 import { BeefyVault } from "../../generated/schema"
 import {
   PLATFORM_AAVE,
+  PLATFORM_BALANCER,
   PLATFORM_BALANCER_AURA,
   PLATFORM_BEEFY_CLM,
   PLATFORM_BEEFY_CLM_VAULT,
@@ -20,7 +21,7 @@ import {
 } from "../vault-config"
 import { TokenBalance } from "./common"
 import { getVaultTokenBreakdownPendle } from "./pendle"
-import { getVaultTokenBreakdownBalancer } from "./balancer"
+import { getVaultTokenBreakdownBalancerAura, getVaultTokenBreakdownBalancer } from "./balancer"
 import { getVaultTokenBreakdownCurve } from "./curve"
 import { getVaultTokenBreakdownSolidly } from "./solidly"
 import { getVaultTokenBreakdownAave } from "./aave"
@@ -36,8 +37,10 @@ import { getVaultTokenBreakdownSilo } from "./silo"
 export function getVaultTokenBreakdown(vault: BeefyVault): Array<TokenBalance> {
   if (vault.underlyingPlatform == PLATFORM_PENDLE_EQUILIBRIA) {
     return getVaultTokenBreakdownPendle(vault)
-  } else if (vault.underlyingPlatform == PLATFORM_BALANCER_AURA) {
+  } else if (vault.underlyingPlatform == PLATFORM_BALANCER) {
     return getVaultTokenBreakdownBalancer(vault)
+  } else if (vault.underlyingPlatform == PLATFORM_BALANCER_AURA) {
+    return getVaultTokenBreakdownBalancerAura(vault)
   } else if (vault.underlyingPlatform == PLATFORM_CURVE) {
     return getVaultTokenBreakdownCurve(vault)
   } else if (vault.underlyingPlatform == PLATFORM_SOLIDLY) {
