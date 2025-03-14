@@ -25,7 +25,8 @@
     "prepare:manta": "./bin/prepare.sh manta",
     "prepare:mode": "./bin/prepare.sh mode",
     "prepare:optimism": "./bin/prepare.sh optimism",
-    "prepare:sei": "./bin/prepare.sh sei"
+    "prepare:sei": "./bin/prepare.sh sei",
+    "prepare:sonic": "./bin/prepare.sh sonic"
   },
   "main": "./bin/index.js",
   "bin": {

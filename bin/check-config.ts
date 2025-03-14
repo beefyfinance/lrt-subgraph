@@ -1,60 +1,118 @@
 import { VaultConfig, _getChainVaults } from "../src/vault-config"
 import * as fs from "fs"
 
+type ApiVault = {
+  id: string
+  assets: string[]
+  earnContractAddress: string
+  pointStructureIds?: string[]
+  platformId?: string
+}
+
+interface ApiPointsStructure {
+  id: string
+  docs: string
+  points: {
+    id: string
+    name: string
+  }[]
+  eligibility: Array<
+    | { type: "token-holding"; tokens: string[] }
+    | { type: "vault-whitelist" }
+    | { type: "on-chain-lp"; chain: string }
+    | { type: "token-on-platform"; platform: string; tokens: string[] }
+    | { type: "platform"; platformId: string; liveAfter: string }
+  >
+  accounting: {
+    id: string
+    role: string
+    type?: "airdrop" | "claim"
+    url?: string
+  }[]
+}
+
+interface ApiBoost {
+  id: string
+  poolId: string // vault id
+  tokenAddress: string // vault address
+  earnContractAddress: string // address of the boost contract
+}
+
+interface ApiGovVault {
+  id: string
+  version?: number
+  tokenAddress: string // clm manager address
+  earnContractAddress: string // reward pool address
+}
+
+const pointStructureOverrides: Record<string, string[]> = {
+  "silo-arb-silo": ["silo-points"],
+  "silov2-sonic-usdce-ws": ["silo-points"],
+}
+
+const additionalPointStructureConfig: ApiPointsStructure[] = [
+  {
+    id: "silo-points",
+    docs: "TODO",
+    points: [
+      {
+        id: "silo-points",
+        name: "Silo Points",
+      },
+    ],
+    eligibility: [
+      {
+        type: "platform",
+        platformId: "silo",
+        liveAfter: "2025-03-01",
+      },
+    ],
+    accounting: [
+      {
+        id: "beefy-lrt-subgraph",
+        role: "Raw indexing of blockchain data, computes time weighted balances",
+        url: "https://github.com/beefyfinance/lrt-subgraph",
+      },
+      {
+        id: "beefy-lrt-api",
+        role: "API for the LRT subgraph. Provides stable API.",
+        url: "https://github.com/beefyfinance/beefy-lrt-api",
+      },
+      {
+        id: "lisk-points",
+        role: "Distribution of rewards",
+        type: "airdrop",
+        url: "TODO",
+      },
+    ],
+  },
+]
+
 const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: string; subgraphChain: string }) => {
   console.log(`\n================================================`)
   console.log(`\n======================== ${chain} ========================`)
   let hasErrors = false
   // fetch vault config from https://api.beefy.com/vaults
 
-  type ApiVault = {
-    id: string
-    assets: string[]
-    earnContractAddress: string
-    pointStructureIds?: string[]
-    platformId?: string
-  }
-
-  interface ApiPointsStructure {
-    id: string
-    docs: string
-    points: {
-      id: string
-      name: string
-    }[]
-    eligibility: Array<
-      | { type: "token-holding"; tokens: string[] }
-      | { type: "vault-whitelist" }
-      | { type: "on-chain-lp"; chain: string }
-      | { type: "token-on-platform"; platform: string; tokens: string[] }
-    >
-    accounting: {
-      id: string
-      role: string
-      url?: string
-    }[]
-  }
-
-  interface ApiBoost {
-    id: string
-    poolId: string // vault id
-    tokenAddress: string // vault address
-    earnContractAddress: string // address of the boost contract
-  }
-
-  interface ApiGovVault {
-    id: string
-    version?: number
-    tokenAddress: string // clm manager address
-    earnContractAddress: string // reward pool address
+  function addPointStructureOverrides(vault: ApiVault): ApiVault {
+    if (pointStructureOverrides[vault.id]) {
+      return { ...vault, pointStructureIds: [...(vault.pointStructureIds || []), ...pointStructureOverrides[vault.id]] }
+    }
+    return vault
   }
 
   const [classicVaults, cowVaults, boosts, govVaults, pointsStructures] = await Promise.all([
-    await fetch(`https://api.beefy.finance/vaults/${chain}`).then((res): Promise<ApiVault[]> => res.json()),
-    await fetch(`https://api.beefy.finance/cow-vaults/${chain}`).then((res): Promise<ApiVault[]> => res.json()),
+    await fetch(`https://api.beefy.finance/vaults/${chain}`)
+      .then((res): Promise<ApiVault[]> => res.json())
+      .then((vs): ApiVault[] => vs.map(addPointStructureOverrides)),
+    await fetch(`https://api.beefy.finance/cow-vaults/${chain}`)
+      .then((res): Promise<ApiVault[]> => res.json())
+      .then((vs): ApiVault[] => vs.map(addPointStructureOverrides)),
     await fetch(`https://api.beefy.finance/boosts/${chain}`).then((res): Promise<ApiBoost[]> => res.json()),
     await fetch(`https://api.beefy.finance/gov-vaults/${chain}`).then((res): Promise<ApiGovVault[]> => res.json()),
-    await fetch(`https://api.beefy.finance/points-structures`).then((res): Promise<ApiPointsStructure[]> => res.json()),
+    await fetch(`https://api.beefy.finance/points-structures`)
+      .then((res): Promise<ApiPointsStructure[]> => res.json())
+      .then((ps) => ps.concat(additionalPointStructureConfig)),
   ])
 
   const pointsStructuresSupportedByThisSubgraph = pointsStructures.filter((p) => (p.accounting || []).some((e) => e.id === "beefy-lrt-subgraph"))

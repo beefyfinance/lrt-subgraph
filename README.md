@@ -75,7 +75,6 @@ yarn test:lint # run prettier linter
    - Apply the configuration: `npm run prepare:<chain>`
    - Build the application: `npm run build`
    - Run Tests: `npm run test`
-   - The PROD env is the uncommented url in the [lrt-api .graphqlclient file](https://github.com/beefyfinance/beefy-lrt-api/blob/main/.graphclientrc.yml#L9)
    - Deploy the new chain in DEV: `./bin/deploy.sh <chain> <dev provider>`
    - Test the data in the dev provider subgraph explorer
    - Manually deploy the new chain in PROD for the first version: `./bin/deploy.sh <chain> <dev provider>`

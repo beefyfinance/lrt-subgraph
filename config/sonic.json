@@ -1,0 +1,11 @@
+{
+  "network": "sonic",
+  "indexerHintPrune": 10800000,
+  "shareTokenMintAddress": "0x0000000000000000000000000000000000000000",
+  "burnAddress": "0x000000000000000000000000000000000000dead",
+  "bindConfigAddress": "0x8e0B63846ebEFf857EE35eF3BD3A2df9EF7D6456",
+  "bindConfigBlock": 490985,
+  "bindConfigEvent": "ProxyCreated(address)",
+  "vaultInitializedEvent": "Initialized(uint8)",
+  "clockTickBlocks": 900
+}

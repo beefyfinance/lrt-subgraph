@@ -13,6 +13,7 @@ export const PLATFORM_BEEFY_CLM = "BEEFY_CLM"
 export const PLATFORM_BEEFY_CLM_VAULT = "BEEFY_CLM_VAULT"
 export const TRACK_ONLY_SHARE_TOKEN_BALANCE = "TRACK_ONLY_SHARE_TOKEN_BALANCE"
 export const TRACK_ONLY_SHARE_AND_UNDERLYING_TOKEN_BALANCE = "TRACK_ONLY_SHARE_AND_UNDERLYING_TOKEN_BALANCE"
+export const PLATFORM_SILO = "SILO"
 
 export function _getChainVaults(network: string): Array<VaultConfig> {
   const vaults = new Array<VaultConfig>()
@@ -60,6 +61,7 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
     vaults.push(new VaultConfig("uniswap-cow-arb-rseth-weth", PLATFORM_BEEFY_CLM, "0xf3d5c975de1c0fd358a593bcef7a41c61366127c", ["0x04D463bf08dF252Cb09a87D6d41a33c535942710"]))
     vaults.push(new VaultConfig("uniswap-cow-arb-rseth-wsteth-vault", PLATFORM_BEEFY_CLM_VAULT, "0x86b81747ffd477907F8dF2DAF67A82314B94ae36", ["0x3Cfb81925e69650127b0cA3d9869027a94C01aC4"]))
     vaults.push(new VaultConfig("uniswap-cow-arb-rseth-wsteth", PLATFORM_BEEFY_CLM, "0x15cfBd3Db5D24360eeac802b3dde4423eb5C3C70", ["0x8B0345E218B84274154071614641a501821374A6"]))
+    vaults.push(new VaultConfig("silo-arb-silo", PLATFORM_SILO, "0x92261402689559D3cF1435ecB28B8B87832c2468", ["0x39Cb8CF3Fd0e0Ed4468ba9F93493BB61189E7a0e"]))
   }
 
   if (network === "base") {
@@ -153,6 +155,10 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
     vaults.push(new VaultConfig("yei-usdt", PLATFORM_AAVE, "0xcb25214EC41Ea480068638897FcBd6F1206F5521"))
     vaults.push(new VaultConfig("yei-usdc", PLATFORM_AAVE, "0x906e60166A4B185016e53597fA12FBB1424e47d7"))
     vaults.push(new VaultConfig("yei-wsei", PLATFORM_AAVE, "0x9E6B9518978bb7caf2ad70778E9AEED9eDb3DB78"))
+  }
+
+  if (network === "sonic") {
+    vaults.push(new VaultConfig("silov2-sonic-usdce-ws", PLATFORM_SILO, "0xdb6E5dC4C6748EcECb97b565F6C074f24384fD07"))
   }
 
   return vaults
