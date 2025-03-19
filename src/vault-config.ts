@@ -160,7 +160,10 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
 
   if (network === "sonic") {
     vaults.push(new VaultConfig("silov2-sonic-usdce-ws", PLATFORM_SILO, "0xdb6E5dC4C6748EcECb97b565F6C074f24384fD07"))
+
+    // this is a special case where we need to breakdown "silov2-sonic-usdce-ws" holding down to the balancer pool list
     vaults.push(new VaultConfig("beetsv3-sonic-beefyusdce-scusd", PLATFORM_BALANCER, "0x0aD8162B686af063073EABbEA9bC6FdA2D8184A4", ["0x1eB18145248EDF9b077e19584c7a93D61490422E"]))
+    vaults.push(new VaultConfig("bpt-scusd-beefyusdc-gauge", TRACK_ONLY_SHARE_TOKEN_BALANCE, "0x5D9e8B588F1D9e28ea1963681180d8b5938D26BA", []))
   }
 
   return vaults

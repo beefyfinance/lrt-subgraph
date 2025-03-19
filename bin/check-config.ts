@@ -45,49 +45,9 @@ interface ApiGovVault {
   earnContractAddress: string // reward pool address
 }
 
-const pointStructureOverrides: Record<string, string[]> = {
-  "silo-arb-silo": ["silo-points"],
-  "silov2-sonic-usdce-ws": ["silo-points"],
-  "beetsv3-sonic-beefyusdce-scusd": ["silo-points"],
-}
-
-const additionalPointStructureConfig: ApiPointsStructure[] = [
-  {
-    id: "silo-points",
-    docs: "TODO",
-    points: [
-      {
-        id: "silo-points",
-        name: "Silo Points",
-      },
-    ],
-    eligibility: [
-      {
-        type: "platform",
-        platformId: "silo",
-        liveAfter: "2025-03-01",
-      },
-    ],
-    accounting: [
-      {
-        id: "beefy-lrt-subgraph",
-        role: "Raw indexing of blockchain data, computes time weighted balances",
-        url: "https://github.com/beefyfinance/lrt-subgraph",
-      },
-      {
-        id: "beefy-lrt-api",
-        role: "API for the LRT subgraph. Provides stable API.",
-        url: "https://github.com/beefyfinance/beefy-lrt-api",
-      },
-      {
-        id: "lisk-points",
-        role: "Distribution of rewards",
-        type: "airdrop",
-        url: "TODO",
-      },
-    ],
-  },
-]
+const pointStructureOverrides: Record<string, string[]> = {}
+const additionalPointStructureConfig: ApiPointsStructure[] = []
+const additionalConfigNotInApi: string[] = ["bpt-scusd-beefyusdc-gauge"]
 
 const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: string; subgraphChain: string }) => {
   console.log(`\n================================================`)
@@ -202,7 +162,9 @@ const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: strin
     const apiVaultFound = apiVaultFoundById || apiVaultFoundByAddress
     if (!apiVaultFound) {
       //hasErrors = true
-      console.error(`WARN: Vault ${configVault.vaultKey} found in LRT subgraph config but not in api`)
+      if (!additionalConfigNotInApi.includes(configVault.vaultKey)) {
+        console.error(`WARN: Vault ${configVault.vaultKey} found in LRT subgraph config but not in api`)
+      }
     } else if (!apiVaultFoundByAddress) {
       console.warn(
         `WARN: Vault with id ${configVault.vaultKey} has incorrect address ${configVault.address} instead of ${apiVaultFound.earnContractAddress}`,
