@@ -47,7 +47,7 @@ interface ApiGovVault {
 
 const pointStructureOverrides: Record<string, string[]> = {}
 const additionalPointStructureConfig: ApiPointsStructure[] = []
-const additionalConfigNotInApi: string[] = ["bpt-scusd-beefyusdc-gauge"]
+const additionalConfigNotInApi: string[] = ["bpt-scusd-beefyusdc-gauge", "bpt-scusd-beefyusdc"]
 
 const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: string; subgraphChain: string }) => {
   console.log(`\n================================================`)
