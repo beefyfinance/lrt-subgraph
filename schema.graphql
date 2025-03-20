@@ -30,6 +30,9 @@ type Investor @entity {
 
   "The investor's balances in all the tracked vaults"
   positions: [InvestorPosition!]! @derivedFrom(field: "investor")
+
+  "The investor's balances in all the tracked tokens"
+  tokenBalances: [TokenBalance!]! @derivedFrom(field: "investor")
 }
 
 """
@@ -58,6 +61,9 @@ type Token @entity(immutable: true) {
 
   "The investor position breakdown that hold this token"
   investorPositionBalanceBreakdowns: [InvestorPositionBalanceBreakdown!]! @derivedFrom(field: "token")
+
+  "The token balances that hold this token"
+  tokenBalances: [TokenBalance!]! @derivedFrom(field: "token")
 }
 
 enum VaultLifecycle {
