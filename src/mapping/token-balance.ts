@@ -3,6 +3,7 @@ import { getTokenBalance } from "../entity/token-balance"
 import { Transfer } from "../../generated/templates/TokenBalance/IERC20"
 import { ADDRESS_ZERO } from "../utils/address"
 import { SHARE_TOKEN_MINT_ADDRESS } from "../config"
+import { getInvestor } from "../entity/investor"
 
 export function handleTokenBalanceTransfer(event: Transfer): void {
   const token = event.address
@@ -27,8 +28,11 @@ export function handleTokenBalanceTransfer(event: Transfer): void {
   }
 }
 
-function updateTokenBalance(token: Bytes, investor: Bytes, diff: BigInt): void {
-  const tokenBalance = getTokenBalance(investor, token)
+function updateTokenBalance(tokenAddress: Bytes, investorAddress: Bytes, diff: BigInt): void {
+  const investor = getInvestor(investorAddress)
+  investor.save()
+
+  const tokenBalance = getTokenBalance(investorAddress, tokenAddress)
   tokenBalance.rawBalance = tokenBalance.rawBalance.plus(diff)
   tokenBalance.save()
 }
