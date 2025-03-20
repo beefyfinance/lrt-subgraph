@@ -98,6 +98,23 @@ templates:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
 
+  - name: TokenBalance
+    kind: ethereum/contract
+    network: {{network}}
+    source:
+      abi: IERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7 # 0xgraph's version
+      language: wasm/assemblyscript
+      file: ./src/mapping/token-balance.ts
+      entities:
+        - TokenBalance
+      abis: *abis
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTokenBalanceTransfer
+
   - name: BeefyRewardPool
     kind: ethereum/contract
     network: {{network}}

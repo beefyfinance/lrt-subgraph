@@ -259,3 +259,20 @@ type InvestorPositionBalanceBreakdown @entity {
   "last time the balance was updated"
   lastUpdateBlock: BigInt!
 }
+
+"""
+A tracking of the balance of a token for an investor
+"""
+type TokenBalance @entity {
+  "investor address + token address"
+  id: Bytes!
+
+  "Investor address"
+  investor: Investor!
+
+  "Token address"
+  token: Token!
+
+  "raw balance of the token"
+  rawBalance: BigInt!
+}

@@ -1,4 +1,8 @@
-import { BeefyVaultV7 as BeefyVaultV7Template, BeefyRewardPool as BeefyRewardPoolTemplate } from "../generated/templates"
+import {
+  BeefyVaultV7 as BeefyVaultV7Template,
+  BeefyRewardPool as BeefyRewardPoolTemplate,
+  TokenBalance as TokenBalanceTemplate,
+} from "../generated/templates"
 import { getChainVaults, buildVaultDataSourceContext } from "./vault-config-asm"
 import { ethereum, log } from "@graphprotocol/graph-ts"
 
@@ -33,10 +37,12 @@ export function bindAllContracts(_: ethereum.Event): void {
     // start indexing this vault
     const context = buildVaultDataSourceContext(vaultConfig)
     BeefyVaultV7Template.createWithContext(vaultConfig.address, context)
+    TokenBalanceTemplate.createWithContext(vaultConfig.address, context)
 
     for (let j = 0; j < vaultConfig.rewardPoolsAddresses.length; j++) {
       const rpAddress = vaultConfig.rewardPoolsAddresses[j]
       BeefyRewardPoolTemplate.createWithContext(rpAddress, context)
+      TokenBalanceTemplate.createWithContext(rpAddress, context)
     }
   }
 }
