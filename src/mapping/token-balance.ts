@@ -19,10 +19,10 @@ export function handleTokenBalanceTransfer(event: Transfer): void {
     return
   }
 
-  if (!from.equals(ADDRESS_ZERO) && !to.equals(SHARE_TOKEN_MINT_ADDRESS)) {
+  if (!from.equals(ADDRESS_ZERO) && !from.equals(SHARE_TOKEN_MINT_ADDRESS)) {
     updateTokenBalance(token, from, value.neg())
   }
-  if (!to.equals(ADDRESS_ZERO) && !from.equals(SHARE_TOKEN_MINT_ADDRESS)) {
+  if (!to.equals(ADDRESS_ZERO) && !to.equals(SHARE_TOKEN_MINT_ADDRESS)) {
     updateTokenBalance(token, to, value)
   }
 }
