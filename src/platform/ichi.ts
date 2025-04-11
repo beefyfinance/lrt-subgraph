@@ -31,8 +31,8 @@ export function getVaultTokenBreakdownIchiLynex(vault: BeefyVault): Array<TokenB
 
   const wantBalance0 = basePositionAmount0.plus(limitPositionAmount0)
   const wantBalance1 = basePositionAmount1.plus(limitPositionAmount1)
-  balances.push(new TokenBalance(token0, wantTotalBalance.div(totalSupply).times(wantBalance0)))
-  balances.push(new TokenBalance(token1, wantTotalBalance.div(totalSupply).times(wantBalance1)))
+  balances.push(new TokenBalance(token0, wantTotalBalance.times(wantBalance0).div(totalSupply)))
+  balances.push(new TokenBalance(token1, wantTotalBalance.times(wantBalance1).div(totalSupply)))
 
   return balances
 }
