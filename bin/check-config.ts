@@ -48,6 +48,7 @@ interface ApiGovVault {
 const pointStructureOverrides: Record<string, string[]> = {}
 const additionalPointStructureConfig: ApiPointsStructure[] = []
 const additionalConfigNotInApi: string[] = ["bpt-scusd-beefyusdc-gauge", "bpt-scusd-beefyusdc"]
+const unwindingPointsStructures: string[] = ["renzo"]
 
 const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: string; subgraphChain: string }) => {
   console.log(`\n================================================`)
@@ -55,20 +56,21 @@ const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: strin
   let hasErrors = false
   // fetch vault config from https://api.beefy.com/vaults
 
-  function addPointStructureOverrides(vault: ApiVault): ApiVault {
-    if (pointStructureOverrides[vault.id]) {
-      return { ...vault, pointStructureIds: [...(vault.pointStructureIds || []), ...pointStructureOverrides[vault.id]] }
-    }
-    return vault
+  function hotfixPointStructure(vault: ApiVault): ApiVault {
+    let newPointStructureIds = (vault.pointStructureIds || [])
+      .filter((id) => !unwindingPointsStructures.includes(id))
+      .concat(pointStructureOverrides[vault.id] || [])
+
+    return { ...vault, pointStructureIds: newPointStructureIds }
   }
 
   const [classicVaults, cowVaults, boosts, govVaults, pointsStructures] = await Promise.all([
     await fetch(`https://api.beefy.finance/vaults/${chain}`)
       .then((res): Promise<ApiVault[]> => res.json())
-      .then((vs): ApiVault[] => vs.map(addPointStructureOverrides)),
+      .then((vs): ApiVault[] => vs.map(hotfixPointStructure)),
     await fetch(`https://api.beefy.finance/cow-vaults/${chain}`)
       .then((res): Promise<ApiVault[]> => res.json())
-      .then((vs): ApiVault[] => vs.map(addPointStructureOverrides)),
+      .then((vs): ApiVault[] => vs.map(hotfixPointStructure)),
     await fetch(`https://api.beefy.finance/boosts/${chain}`).then((res): Promise<ApiBoost[]> => res.json()),
     await fetch(`https://api.beefy.finance/gov-vaults/${chain}`).then((res): Promise<ApiGovVault[]> => res.json()),
     await fetch(`https://api.beefy.finance/points-structures`)
