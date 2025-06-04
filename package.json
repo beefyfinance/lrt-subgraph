@@ -23,7 +23,6 @@
     "prepare:linea": "./bin/prepare.sh linea",
     "prepare:lisk": "./bin/prepare.sh lisk",
     "prepare:manta": "./bin/prepare.sh manta",
-    "prepare:mode": "./bin/prepare.sh mode",
     "prepare:optimism": "./bin/prepare.sh optimism",
     "prepare:sei": "./bin/prepare.sh sei",
     "prepare:sonic": "./bin/prepare.sh sonic"
