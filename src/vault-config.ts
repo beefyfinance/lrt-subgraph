@@ -130,7 +130,7 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
   }
 
   if (network === "sonic") {
-    vaults.push(new VaultConfig("silov2-sonic-usdc-valamore", PLATFORM_SILO, "0x24c8D7Dc7D1d2dc0e6f6AE97345c04450a174782"))
+    vaults.push(new VaultConfig("silov2-sonic-usdc-valamore", PLATFORM_SILO, "0x24c8D7Dc7D1d2dc0e6f6AE97345c04450a174782", ["0x65E44AD1291757C79E4760596F65002a4C42B7b1"]))
     vaults.push(new VaultConfig("silov2-sonic-usdc-apostro", PLATFORM_SILO, "0x392Ea759ad696004e5A8f1Ece45CAc99FAc45F4F"))
     vaults.push(new VaultConfig("silov2-sonic-ws-valamore", PLATFORM_SILO, "0xfDd63AD264A06c3C5b515348BcF692837e841091"))
 
