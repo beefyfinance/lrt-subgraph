@@ -4,7 +4,7 @@
     "shareTokenMintAddress": "0x0000000000000000000000000000000000000000",
     "burnAddress": "0x000000000000000000000000000000000000dead",
     "bindConfigAddress": "0xBC4a342B0c057501E081484A2d24e576E854F823",
-    "bindConfigBlock": 4883535,
+    "bindConfigBlock": 7400000,
     "bindConfigEvent": "ProxyCreated(address)",
     "vaultInitializedEvent": "Initialized(uint8)",
     "clockTickBlocks": 300
