@@ -22,11 +22,12 @@ interface ApiPointsStructure {
     | { type: "on-chain-lp"; chain: string }
     | { type: "token-on-platform"; platform: string; tokens: string[] }
     | { type: "platform"; platformId: string; liveAfter: string }
+    | { type: "provider"; tokenProviderId: string; liveAfter: string }
   >
   accounting: {
     id: string
     role: string
-    type?: "airdrop" | "claim"
+    type?: "airdrop" | "claim" | "claim-rewards"
     url?: string
   }[]
 }
@@ -45,8 +46,56 @@ interface ApiGovVault {
   earnContractAddress: string // reward pool address
 }
 
-const pointStructureOverrides: Record<string, string[]> = {}
-const additionalPointStructureConfig: ApiPointsStructure[] = []
+const pointStructureOverrides: Record<string, string[]> = {
+  "hybra-cow-hyperevm-feusd-usdt0-rp": ["hybra"],
+  "hybra-cow-hyperevm-whype-usdt0-rp": ["hybra"],
+  "hybra-cow-hyperevm-feusd-whype-rp": ["hybra"],
+  "hybra-cow-hyperevm-feusd-usdt0": ["hybra"],
+  "hybra-cow-hyperevm-whype-usdt0": ["hybra"],
+  "hybra-cow-hyperevm-feusd-whype": ["hybra"],
+}
+const additionalPointStructureConfig: ApiPointsStructure[] = [
+  {
+    id: "hybra",
+    docs: "https://www.hybra.finance/points",
+    points: [
+      {
+        id: "hybra-points",
+        name: "Hybra Points",
+      },
+    ],
+    eligibility: [
+      {
+        type: "platform",
+        platformId: "hybra",
+        liveAfter: "2025-07-01",
+      },
+      {
+        type: "provider",
+        tokenProviderId: "hybra",
+        liveAfter: "2025-07-01",
+      },
+    ],
+    accounting: [
+      {
+        id: "beefy-lrt-subgraph",
+        role: "Raw indexing of blockchain data, computes time weighted balances",
+        url: "https://github.com/beefyfinance/lrt-subgraph",
+      },
+      {
+        id: "beefy-lrt-api",
+        role: "API for the LRT subgraph. Provides stable API.",
+        url: "https://github.com/beefyfinance/beefy-lrt-api",
+      },
+      {
+        id: "hybra-points",
+        role: "Distribution of rewards",
+        type: "claim-rewards",
+        url: "https://www.hybra.finance/points",
+      },
+    ],
+  },
+]
 const additionalConfigNotInApi: string[] = ["bpt-scusd-beefyusdc-gauge", "bpt-scusd-beefyusdc"]
 const unwindingPointsStructures: string[] = ["renzo"]
 

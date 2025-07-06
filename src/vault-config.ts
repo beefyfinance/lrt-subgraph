@@ -76,6 +76,12 @@ export function _getChainVaults(network: string): Array<VaultConfig> {
     // vaults.push(new VaultConfig("pendle-unieth-26sep24", PLATFORM_PENDLE_EQUILIBRIA, "0x9A43381249a6417f8ce03CCF26139b5f05527e4F"))
   }
 
+  if (network === "hyperevm") {
+    vaults.push(new VaultConfig("hybra-cow-hyperevm-feusd-usdt0", PLATFORM_BEEFY_CLM, "0x98312D3c6D900678Bf0667A45b2aADaD92045D78", ["0x325461FFC41246817cdB0e930B405C299Fc5Fd42"]))
+    vaults.push(new VaultConfig("hybra-cow-hyperevm-whype-usdt0", PLATFORM_BEEFY_CLM, "0xdC9d2c590145f3a006FE899D175F93E97dC3a516", ["0x03c27F725DCfdD00E040Ecb7Fb89c24239Ad06b0"]))
+    vaults.push(new VaultConfig("hybra-cow-hyperevm-feusd-whype", PLATFORM_BEEFY_CLM, "0x76C8DaE55CD103B9865c6f056C8da915C8a98c4C", ["0xDd676F923F8a928d97F58F5ADE22c3512d2cFddb"]))
+  }
+
   if (network === "linea") {
     vaults.push(new VaultConfig("lynex-gamma-ineth-wsteth", PLATFORM_GAMMA, "0xAA3b8C08e7Fe86E1dda8FA9FE7423561Ad316e3F"))
     vaults.push(new VaultConfig("lynex-gamma-stone-weth", PLATFORM_GAMMA, "0x1C973f35325947f30F20fE1189605A332FD9F40F"))

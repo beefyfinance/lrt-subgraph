@@ -19,6 +19,7 @@
     "prepare:base": "./bin/prepare.sh base",
     "prepare:bsc": "./bin/prepare.sh bsc",
     "prepare:ethereum": "./bin/prepare.sh ethereum",
+    "prepare:hyperevm": "./bin/prepare.sh hyperevm",
     "prepare:kava": "./bin/prepare.sh kava",
     "prepare:linea": "./bin/prepare.sh linea",
     "prepare:lisk": "./bin/prepare.sh lisk",
