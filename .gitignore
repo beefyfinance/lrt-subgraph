@@ -10,6 +10,7 @@ subgraph.yaml
 src/config.ts
 random.json
 src/random.ts
+src/vault-config.ts
 
 tests/.latest.json
 *.log

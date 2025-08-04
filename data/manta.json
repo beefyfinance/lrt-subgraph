@@ -1,0 +1,12 @@
+{
+    "vaults": [
+        {
+            "vaultKey": "uniswap-cow-manta-weth-stone",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0x906e60166a4b185016e53597fa12fbb1424e47d7",
+            "boostsOrRewardPools": [
+                "0x1386A611e2B692E79Bcfa7dC84AAbB5728f08E44"
+            ]
+        }
+    ]
+}

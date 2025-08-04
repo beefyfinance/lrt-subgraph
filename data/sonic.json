@@ -1,0 +1,57 @@
+{
+    "vaults": [
+        {
+            "vaultKey": "silov2-sonic-usdc-valamore",
+            "underlyingPlatform": "SILO",
+            "address": "0x24c8D7Dc7D1d2dc0e6f6AE97345c04450a174782",
+            "boostsOrRewardPools": [
+                "0x65E44AD1291757C79E4760596F65002a4C42B7b1"
+            ]
+        },
+        {
+            "vaultKey": "silov2-sonic-usdc-apostro",
+            "underlyingPlatform": "SILO",
+            "address": "0x392Ea759ad696004e5A8f1Ece45CAc99FAc45F4F",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "silov2-sonic-ws-valamore",
+            "underlyingPlatform": "SILO",
+            "address": "0xfDd63AD264A06c3C5b515348BcF692837e841091",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "silov2-sonic-usdce-ws",
+            "underlyingPlatform": "SILO",
+            "address": "0xdb6E5dC4C6748EcECb97b565F6C074f24384fD07",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "silov2-sonic-ws-bes",
+            "underlyingPlatform": "SILO",
+            "address": "0xB5c0570F781BDfde5ADff69866fDa932df855a14",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "beetsv3-sonic-beefyusdce-scusd",
+            "underlyingPlatform": "BALANCER",
+            "address": "0x0aD8162B686af063073EABbEA9bC6FdA2D8184A4",
+            "boostsOrRewardPools": [
+                "0x1eB18145248EDF9b077e19584c7a93D61490422E",
+                "0x8b8F62E4239eb61d53afb07eA7789Cd6b1b7b6a1"
+            ]
+        },
+        {
+            "vaultKey": "bpt-scusd-beefyusdc",
+            "underlyingPlatform": "TRACK_ONLY_SHARE_TOKEN_BALANCE",
+            "address": "0x43026d483f42fB35efe03c20B251142D022783f2",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "bpt-scusd-beefyusdc-gauge",
+            "underlyingPlatform": "TRACK_ONLY_SHARE_TOKEN_BALANCE",
+            "address": "0x5D9e8B588F1D9e28ea1963681180d8b5938D26BA",
+            "boostsOrRewardPools": []
+        }
+    ]
+}

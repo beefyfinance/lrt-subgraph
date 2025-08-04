@@ -1,0 +1,52 @@
+{
+    "vaults": [
+        {
+            "vaultKey": "hybra-cow-hyperevm-feusd-usdt0",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0x98312D3c6D900678Bf0667A45b2aADaD92045D78",
+            "boostsOrRewardPools": [
+                "0x325461FFC41246817cdB0e930B405C299Fc5Fd42"
+            ]
+        },
+        {
+            "vaultKey": "hybra-cow-hyperevm-feusd-whype",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0x76C8DaE55CD103B9865c6f056C8da915C8a98c4C",
+            "boostsOrRewardPools": [
+                "0xDd676F923F8a928d97F58F5ADE22c3512d2cFddb"
+            ]
+        },
+        {
+            "vaultKey": "hybra-cow-hyperevm-whlp-whype",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0xfe4e34F6EdBA9B2Fba06014046690Cd558aca0fE",
+            "boostsOrRewardPools": [
+                "0x5D9724177b596CBbABaFc6dB5CF09650d18c9cF1"
+            ]
+        },
+        {
+            "vaultKey": "hybra-cow-hyperevm-whype-lhype",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0x2084839396c56BEf5A25360B0000aB40103C9Db9",
+            "boostsOrRewardPools": [
+                "0x9C0187d188C412266130D0Ba1D17d4977aCc7179"
+            ]
+        },
+        {
+            "vaultKey": "hybra-cow-hyperevm-whype-usde",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0xCbdBa88e24e2455b562683f8170387b264fc08Fa",
+            "boostsOrRewardPools": [
+                "0xb4E9Aea85A2e6037E2C3c133493290915977eaE8"
+            ]
+        },
+        {
+            "vaultKey": "hybra-cow-hyperevm-whype-usdt0",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0xdC9d2c590145f3a006FE899D175F93E97dC3a516",
+            "boostsOrRewardPools": [
+                "0x03c27F725DCfdD00E040Ecb7Fb89c24239Ad06b0"
+            ]
+        }
+    ]
+}

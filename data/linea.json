@@ -1,0 +1,78 @@
+{
+    "vaults": [
+        {
+            "vaultKey": "lynex-gamma-ineth-wsteth",
+            "underlyingPlatform": "GAMMA",
+            "address": "0xAA3b8C08e7Fe86E1dda8FA9FE7423561Ad316e3F",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "lynex-gamma-stone-weth",
+            "underlyingPlatform": "GAMMA",
+            "address": "0x1C973f35325947f30F20fE1189605A332FD9F40F",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "lynex-ichi-stone-lynx",
+            "underlyingPlatform": "ICHI_LYNEX",
+            "address": "0x5AB215b3C42f97165Ab43e7FA7609cc8F8D68817",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "lynex-stone-weth",
+            "underlyingPlatform": "LYNEX",
+            "address": "0x1C8cfC0cFf01D59f2e4d6F547EE227Af869EfA07",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "mendi-linea-wrseth",
+            "underlyingPlatform": "AAVE",
+            "address": "0xb4B9D861bf734b2c695acd0117a41a6c10F51305",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "mendi-linea-lev-usdc",
+            "underlyingPlatform": "MENDI_LEVERAGE",
+            "address": "0x9ab545Ab024a8Da2302f5b0D016F4f5501e330d1",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "mendi-linea-lev-usdt",
+            "underlyingPlatform": "MENDI_LEVERAGE",
+            "address": "0xC3C757EA1429231C437736746Eb77A2344EAcb81",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "mendi-linea-lev-wbtc",
+            "underlyingPlatform": "MENDI_LEVERAGE",
+            "address": "0x639041dD8cD48B52C12414235d97E1313cbbceff",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "mendi-linea-lev-weth",
+            "underlyingPlatform": "MENDI_LEVERAGE",
+            "address": "0x23EC7f31a5c74D5Fe21aa386A7519028DBD6bA40",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "mendi-linea-lev-wsteth",
+            "underlyingPlatform": "MENDI_LEVERAGE",
+            "address": "0xBF71FbCe0d4Fc460D36fa1d13B397a3cd5c45220",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "nile-cl-rseth-weth-vault",
+            "underlyingPlatform": "BEEFY_CLM_VAULT",
+            "address": "0x1Ea0a1a0D35f4A72156Aa19AC6322cfAA1f7DFd8",
+            "boostsOrRewardPools": []
+        },
+        {
+            "vaultKey": "nile-cl-rseth-weth",
+            "underlyingPlatform": "BEEFY_CLM",
+            "address": "0x7c82356b425DaF36D447D24BAa6906eE15EBcf9A",
+            "boostsOrRewardPools": [
+                "0xEF0f0D10A93f5BDeF4aCEFaC02770eeC26302147"
+            ]
+        }
+    ]
+}

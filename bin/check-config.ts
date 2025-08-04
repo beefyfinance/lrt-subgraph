@@ -1,5 +1,64 @@
-import { VaultConfig, _getChainVaults } from "../src/vault-config"
 import * as fs from "fs"
+
+// Local VaultConfig class to match the structure from the JSON files
+class VaultConfig {
+  public vaultKey: string
+  public underlyingPlatform: string
+  public address: string
+  public boostAddresses: Array<string>
+  public rewardPoolsAddresses: Array<string>
+
+  constructor(vaultKey: string, underlyingPlatform: string, vault: string, boostsOrRewardPools: Array<string> = []) {
+    this.vaultKey = vaultKey
+    this.underlyingPlatform = underlyingPlatform
+    this.address = vault
+    this.boostAddresses = new Array<string>()
+    this.rewardPoolsAddresses = new Array<string>()
+
+    // Determine if this is a BEEFY_CLM or BEEFY_CLM_VAULT platform
+    if (underlyingPlatform === "BEEFY_CLM" || underlyingPlatform === "BEEFY_CLM_VAULT") {
+      for (let i = 0; i < boostsOrRewardPools.length; i++) {
+        this.rewardPoolsAddresses.push(boostsOrRewardPools[i])
+      }
+    } else {
+      for (let i = 0; i < boostsOrRewardPools.length; i++) {
+        this.boostAddresses.push(boostsOrRewardPools[i])
+      }
+    }
+  }
+}
+
+// Function to read vault configurations from JSON data files
+function getChainVaultsFromJson(chain: string): Array<VaultConfig> {
+  const dataFilePath = `./data/${chain}.json`
+  
+  if (!fs.existsSync(dataFilePath)) {
+    console.warn(`No data file found for chain: ${chain}`)
+    return []
+  }
+
+  try {
+    const content = fs.readFileSync(dataFilePath, "utf-8")
+    const data = JSON.parse(content)
+    
+    if (!data.vaults || !Array.isArray(data.vaults)) {
+      console.warn(`Invalid data file format for chain: ${chain}`)
+      return []
+    }
+
+    return data.vaults.map((vault: any) => 
+      new VaultConfig(
+        vault.vaultKey,
+        vault.underlyingPlatform,
+        vault.address,
+        vault.boostsOrRewardPools || []
+      )
+    )
+  } catch (error) {
+    console.error(`Error reading data file for chain ${chain}:`, error)
+    return []
+  }
+}
 
 type ApiVault = {
   id: string
@@ -138,7 +197,7 @@ const checkConfig = async ({ apiChain: chain, subgraphChain }: { apiChain: strin
 
   const allApiVaults = classicVaults.concat(cowVaults)
   const apiVaultsSupportedByThisSubgraph = allApiVaults.filter((v) => v.pointStructureIds?.some((id) => !!supportedPointsStructuresById[id]))
-  const configVaults = _getChainVaults(subgraphChain)
+  const configVaults = getChainVaultsFromJson(chain)
 
   const configVaultsByAddress = configVaults.reduce(
     (acc, v) => {
