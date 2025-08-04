@@ -1,5 +1,7 @@
 import * as fs from "fs"
 
+//// @deprecated - this is checked by VSM now
+
 // Local VaultConfig class to match the structure from the JSON files
 class VaultConfig {
   public vaultKey: string
@@ -31,7 +33,7 @@ class VaultConfig {
 // Function to read vault configurations from JSON data files
 function getChainVaultsFromJson(chain: string): Array<VaultConfig> {
   const dataFilePath = `./data/${chain}.json`
-  
+
   if (!fs.existsSync(dataFilePath)) {
     console.warn(`No data file found for chain: ${chain}`)
     return []
@@ -40,20 +42,13 @@ function getChainVaultsFromJson(chain: string): Array<VaultConfig> {
   try {
     const content = fs.readFileSync(dataFilePath, "utf-8")
     const data = JSON.parse(content)
-    
+
     if (!data.vaults || !Array.isArray(data.vaults)) {
       console.warn(`Invalid data file format for chain: ${chain}`)
       return []
     }
 
-    return data.vaults.map((vault: any) => 
-      new VaultConfig(
-        vault.vaultKey,
-        vault.underlyingPlatform,
-        vault.address,
-        vault.boostsOrRewardPools || []
-      )
-    )
+    return data.vaults.map((vault: any) => new VaultConfig(vault.vaultKey, vault.underlyingPlatform, vault.address, vault.boostsOrRewardPools || []))
   } catch (error) {
     console.error(`Error reading data file for chain ${chain}:`, error)
     return []
@@ -106,54 +101,54 @@ interface ApiGovVault {
 }
 
 const pointStructureOverrides: Record<string, string[]> = {
-  "hybra-cow-hyperevm-feusd-usdt0-rp": ["hybra"],
-  "hybra-cow-hyperevm-whype-usdt0-rp": ["hybra"],
-  "hybra-cow-hyperevm-feusd-whype-rp": ["hybra"],
-  "hybra-cow-hyperevm-feusd-usdt0": ["hybra"],
-  "hybra-cow-hyperevm-whype-usdt0": ["hybra"],
-  "hybra-cow-hyperevm-feusd-whype": ["hybra"],
+  // "hybra-cow-hyperevm-feusd-usdt0-rp": ["hybra"],
+  // "hybra-cow-hyperevm-whype-usdt0-rp": ["hybra"],
+  // "hybra-cow-hyperevm-feusd-whype-rp": ["hybra"],
+  // "hybra-cow-hyperevm-feusd-usdt0": ["hybra"],
+  // "hybra-cow-hyperevm-whype-usdt0": ["hybra"],
+  // "hybra-cow-hyperevm-feusd-whype": ["hybra"],
 }
 const additionalPointStructureConfig: ApiPointsStructure[] = [
-  {
-    id: "hybra",
-    docs: "https://www.hybra.finance/points",
-    points: [
-      {
-        id: "hybra-points",
-        name: "Hybra Points",
-      },
-    ],
-    eligibility: [
-      {
-        type: "platform",
-        platformId: "hybra",
-        liveAfter: "2025-07-01",
-      },
-      {
-        type: "provider",
-        tokenProviderId: "hybra",
-        liveAfter: "2025-07-01",
-      },
-    ],
-    accounting: [
-      {
-        id: "beefy-lrt-subgraph",
-        role: "Raw indexing of blockchain data, computes time weighted balances",
-        url: "https://github.com/beefyfinance/lrt-subgraph",
-      },
-      {
-        id: "beefy-lrt-api",
-        role: "API for the LRT subgraph. Provides stable API.",
-        url: "https://github.com/beefyfinance/beefy-lrt-api",
-      },
-      {
-        id: "hybra-points",
-        role: "Distribution of rewards",
-        type: "claim-rewards",
-        url: "https://www.hybra.finance/points",
-      },
-    ],
-  },
+  // {
+  //   id: "hybra",
+  //   docs: "https://www.hybra.finance/points",
+  //   points: [
+  //     {
+  //       id: "hybra-points",
+  //       name: "Hybra Points",
+  //     },
+  //   ],
+  //   eligibility: [
+  //     {
+  //       type: "platform",
+  //       platformId: "hybra",
+  //       liveAfter: "2025-07-01",
+  //     },
+  //     {
+  //       type: "provider",
+  //       tokenProviderId: "hybra",
+  //       liveAfter: "2025-07-01",
+  //     },
+  //   ],
+  //   accounting: [
+  //     {
+  //       id: "beefy-lrt-subgraph",
+  //       role: "Raw indexing of blockchain data, computes time weighted balances",
+  //       url: "https://github.com/beefyfinance/lrt-subgraph",
+  //     },
+  //     {
+  //       id: "beefy-lrt-api",
+  //       role: "API for the LRT subgraph. Provides stable API.",
+  //       url: "https://github.com/beefyfinance/beefy-lrt-api",
+  //     },
+  //     {
+  //       id: "hybra-points",
+  //       role: "Distribution of rewards",
+  //       type: "claim-rewards",
+  //       url: "https://www.hybra.finance/points",
+  //     },
+  //   ],
+  // },
 ]
 const additionalConfigNotInApi: string[] = ["bpt-scusd-beefyusdc-gauge", "bpt-scusd-beefyusdc"]
 const unwindingPointsStructures: string[] = ["renzo"]
